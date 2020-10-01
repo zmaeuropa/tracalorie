@@ -21,6 +21,9 @@ const ItemCtrl = (function(){
     }
     // Public Methods
     return {
+        getItems: function() {
+            return state.items;
+        },
         logState: function() {
             return state;
         }
@@ -34,7 +37,7 @@ const UiCtrl = (function(){
 
     //Public Methods
     return{
-        
+
     }
  
 })();
