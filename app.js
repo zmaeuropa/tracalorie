@@ -2,6 +2,12 @@
 
 // Item Controller 
 const ItemCtrl = (function(){
+    // Item Constructor
+    const item = function(id, name, calories){
+        this.id = id;
+        this.name = name;
+        this.calories = calories;
+    }
  
 })();
 
