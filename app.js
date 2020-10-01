@@ -16,8 +16,8 @@ const ItemCtrl = (function(){
             {id:1, name: 'Hamburger', calories: 950},
             {id:2, name: 'Salade', calories: 300}
         ],
-        currentItem = null,
-        totalCalories = 0
+        currentItem: null,
+        totalCalories: 0
     }
 
     return {
@@ -36,5 +36,13 @@ const UiCtrl = (function(){
 
 // App Controller
 const App = (function(ItemCtrl, UiCtrl){
- 
+    return {
+        init: function() {
+            console.log('Init app')
+        }
+    }
+
 })(ItemCtrl, UiCtrl);
+
+//Initialize app
+App.init();
