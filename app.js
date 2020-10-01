@@ -20,6 +20,12 @@ const ItemCtrl = (function(){
         totalCalories = 0
     }
 
+    return {
+        logState: function() {
+            return state;
+        }
+    }
+
  
 })();
 
