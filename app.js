@@ -3,7 +3,7 @@
 // Item Controller 
 const ItemCtrl = (function(){
     // Item Constructor
-    const item = function(id, name, calories){
+    const Item = function(id, name, calories){
         this.id = id;
         this.name = name;
         this.calories = calories;
@@ -24,6 +24,26 @@ const ItemCtrl = (function(){
         getItems: function() {
             return state.items;
         },
+        addItem: function(name, calories) {
+            let ID;
+            // create id
+            if (state.items.length > 0) {
+                ID = state.items[state.items.length - 1].id + 1;
+            } else {
+                ID = 0;
+            }
+
+            // calories to number
+            calories = parseInt(calories);
+
+            // Create new item
+            newItem = new Item(ID, name, calories);
+
+            // add to item array
+            state.items.push(newItem);
+
+            return newItem;
+        },
         logState: function() {
             return state;
         }
@@ -36,7 +56,9 @@ const ItemCtrl = (function(){
 const UiCtrl = (function(){
     const UiSelectors = {
         itemList: '#item-list',
-        addBtn: '.add-btn'
+        addBtn: '.add-btn',
+        itemNameInput: '#item-name',
+        itemCaloriesInput: '#item-calories'
     }
     //Public Methods
     return{
@@ -56,7 +78,12 @@ const UiCtrl = (function(){
             // Insert list items
             document.querySelector(UiSelectors.itemList).innerHTML = html;
         },
-
+        getItemInput:function() {
+            return {
+                name: document.querySelector(UiSelectors.itemNameInput).value,
+                calories: document.querySelector(UiSelectors.itemCaloriesInput).value
+            }
+        },
         getSelectors:function() {
             return UiSelectors;
         }
@@ -80,6 +107,12 @@ const App = (function(ItemCtrl, UiCtrl){
         
         // Get form input from Ui Controller
         const input = UiCtrl.getItemInput();
+
+       //Check for name and calories input
+       if (input.name !== '' && input.calories !== '') {
+           //add item 
+           const newItem = ItemCtrl.addItem(input.name, input.calories);
+       }
         e.preventDefault();    
     }
 
