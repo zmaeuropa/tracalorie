@@ -100,6 +100,10 @@ const UiCtrl = (function(){
             // insert item
             document.querySelector(UiSelectors.itemList).insertAdjacentElement('beforeend', li);
         },
+        clearInput:function() {
+            document.querySelector(UiSelectors.itemNameInput).value = '';
+            document.querySelector(UiSelectors.itemCaloriesInput).value = '';
+        },
         getSelectors:function() {
             return UiSelectors;
         }
@@ -128,8 +132,12 @@ const App = (function(ItemCtrl, UiCtrl){
        if (input.name !== '' && input.calories !== '') {
            //add item 
            const newItem = ItemCtrl.addItem(input.name, input.calories);
+
            // add item to UI list
            UiCtrl.addListItem(newItem);
+
+           // clear input
+           UiCtrl.clearInput();
        }
         e.preventDefault();    
     }
