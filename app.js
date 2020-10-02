@@ -77,7 +77,9 @@ const App = (function(ItemCtrl, UiCtrl){
 
     // add item submit
     const itemAddSubmit = function(e) {
-        console.log('Add');
+        
+        // Get form input from Ui Controller
+        const input = UiCtrl.getItemInput();
         e.preventDefault();    
     }
 
