@@ -44,6 +44,22 @@ const ItemCtrl = (function(){
 
             return newItem;
         },
+        getItemById: function(id){
+            let found = null;
+            //Loop throw the item
+            state.items.forEach(function(item){
+                if (item.id === id) {
+                    found = item;
+                }
+            });
+            return found;
+        },
+        setCurrentItem: function(item){
+            state.currentItem = item;
+        },
+        getCurrentItem: function(){
+            return state.currentItem;
+        },
         getTotalCalories:function() {
             let total = 0;
             // loop through item and add calories
@@ -122,6 +138,12 @@ const UiCtrl = (function(){
             document.querySelector(UiSelectors.itemNameInput).value = '';
             document.querySelector(UiSelectors.itemCaloriesInput).value = '';
         },
+        addItemToForm:function(){
+            document.querySelector(UiSelectors.itemNameInput).value = ItemCtrl.getCurrentItem().name;
+            document.querySelector(UiSelectors.itemCaloriesInput).value = ItemCtrl.getCurrentItem().calories;
+            UiCtrl.showEditState();
+    
+        },
         hideList:function() {
             document.querySelector(UiSelectors.itemList).style.display = 'none';
         },
@@ -134,6 +156,12 @@ const UiCtrl = (function(){
             document.querySelector(UiSelectors.deleteBtn).style.display = 'none';
             document.querySelector(UiSelectors.backBtn).style.display = 'none';
             document.querySelector(UiSelectors.addBtn).style.display = 'inline';
+        },
+        showEditState:function(){
+            document.querySelector(UiSelectors.updateBtn).style.display = 'inline';
+            document.querySelector(UiSelectors.deleteBtn).style.display = 'inline';
+            document.querySelector(UiSelectors.backBtn).style.display = 'inline';
+            document.querySelector(UiSelectors.addBtn).style.display = 'none';
         },
         getSelectors:function() {
             return UiSelectors;
@@ -185,7 +213,23 @@ const App = (function(ItemCtrl, UiCtrl){
     const itemUpdateSubmit = function(e){
 
         if (e.target.classList.contains('edit-item')) {
-            console.log('edit-item');
+            // get list item id (item-0, item-1)
+            const listId = e.target.parentNode.parentNode.id;
+            
+            // break into an array
+            const listIdArr = listId.split('-');
+            
+            // get the actual id
+            const id = parseInt(listIdArr[1]);
+
+            // get item
+            const itemToEdit = ItemCtrl.getItemById(id);
+
+            //set current item
+            ItemCtrl.setCurrentItem(itemToEdit);
+
+            // add item to form
+            UiCtrl.addItemToForm();
         }
         e.preventDefault(); 
         
