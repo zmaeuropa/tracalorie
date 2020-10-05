@@ -151,11 +151,14 @@ const App = (function(ItemCtrl, UiCtrl){
 
         // add item event
         document.querySelector(UiSelectors.addBtn).addEventListener('click', itemAddSubmit);
+
+        // edit icon click event
+        document.querySelector(UiSelectors.itemList).addEventListener('click', itemUpdateSubmit);
     }
 
     // add item submit
     const itemAddSubmit = function(e) {
-        
+
         // Get form input from Ui Controller
         const input = UiCtrl.getItemInput();
 
