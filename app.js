@@ -69,6 +69,9 @@ const UiCtrl = (function(){
     const UiSelectors = {
         itemList: '#item-list',
         addBtn: '.add-btn',
+        updateBtn:'.update-btn',
+        deleteBtn:'.delete-btn',
+        backBtn: 'back-btn',
         itemNameInput: '#item-name',
         itemCaloriesInput: '#item-calories',
         totalCalories:'.total-calories'
@@ -124,6 +127,13 @@ const UiCtrl = (function(){
         },
         showTotalCalories:function(totalCalories) {
             document.querySelector(UiSelectors.totalCalories).textContent = totalCalories;
+        },
+        clearEditState:function(){
+            UiCtrl.clearInput();
+            document.querySelector(UiSelectors.updateBtn).style.display = 'none';
+            document.querySelector(UiSelectors.deleteBtn).style.display = 'none';
+            document.querySelector(UiSelectors.backBtn).style.display = 'none';
+            document.querySelector(UiSelectors.addBtn).style.display = 'inline';
         },
         getSelectors:function() {
             return UiSelectors;
