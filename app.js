@@ -181,7 +181,15 @@ const App = (function(ItemCtrl, UiCtrl){
        }
         e.preventDefault();    
     }
+    // Update item submit
+    const itemUpdateSubmit = function(e){
 
+        if (e.target.classList.contains('edit-item')) {
+            console.log('edit-item');
+        }
+        e.preventDefault(); 
+        
+    }
     //Public Methods
     return {
         init: function() {
