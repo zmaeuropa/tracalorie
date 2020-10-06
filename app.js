@@ -181,11 +181,11 @@ const App = (function(ItemCtrl, UiCtrl){
         document.querySelector(UiSelectors.addBtn).addEventListener('click', itemAddSubmit);
 
         // edit icon click event
-        document.querySelector(UiSelectors.itemList).addEventListener('click', itemUpdateSubmit);
+        document.querySelector(UiSelectors.itemList).addEventListener('click', itemEditClick);
     }
 
     // add item submit
-    const itemAddSubmit = function(e) {
+    const itemEditClick = function(e) {
 
         // Get form input from Ui Controller
         const input = UiCtrl.getItemInput();
@@ -242,7 +242,7 @@ const App = (function(ItemCtrl, UiCtrl){
             // Fetch item from state/data structure
             const items = ItemCtrl.getItems();
 
-            // Checj if any items
+            // Check if any items
             if (items.length === 0) {
                 UiCtrl.hideList();
             } else {
