@@ -182,7 +182,7 @@ const App = (function(ItemCtrl, UiCtrl){
 
         // Disable sumbmit on enter(keyboard)
         document.addEventListener('keypress', function(e){
-            if (e.key === 13) {
+            if (e.key === 'Enter') {
                 e.preventDefault();
                 return false;
             }
