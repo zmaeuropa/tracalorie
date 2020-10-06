@@ -184,7 +184,7 @@ const App = (function(ItemCtrl, UiCtrl){
         document.querySelector(UiSelectors.itemList).addEventListener('click', itemEditClick);
     }
 
-    // add item submit
+    // click edit item
     const itemEditClick = function(e) {
 
         // Get form input from Ui Controller
