@@ -247,7 +247,8 @@ const App = (function(ItemCtrl, UiCtrl){
 
     // Update item submit
     const itemUpdateSubmit = function(e){
-        console.log('update');
+        // Get item input
+        const input = UiCtrl.getItemInput();
         e.preventDefault(); 
     }
     //Public Methods
