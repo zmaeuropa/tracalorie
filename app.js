@@ -188,7 +188,7 @@ const App = (function(ItemCtrl, UiCtrl){
     }
 
     // click edit item
-    const itemEditClick = function(e) {
+    const itemAddSubmit = function(e) {
 
         // Get form input from Ui Controller
         const input = UiCtrl.getItemInput();
@@ -213,7 +213,7 @@ const App = (function(ItemCtrl, UiCtrl){
         e.preventDefault();    
     }
     // Update item submit
-    const itemUpdateSubmit = function(e){
+    const itemEditClick = function(e){
 
         if (e.target.classList.contains('edit-item')) {
             // get list item id (item-0, item-1)
@@ -235,7 +235,12 @@ const App = (function(ItemCtrl, UiCtrl){
             UiCtrl.addItemToForm();
         }
         e.preventDefault(); 
-        
+    }
+
+    // Update item submit
+    const itemUpdateSubmit = function(e){
+        console.log('update');
+        e.preventDefault(); 
     }
     //Public Methods
     return {
