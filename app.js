@@ -182,6 +182,9 @@ const App = (function(ItemCtrl, UiCtrl){
 
         // edit icon click event
         document.querySelector(UiSelectors.itemList).addEventListener('click', itemEditClick);
+
+        // update item event
+        document.querySelector(UiSelectors.updateBtn).addEventListener('click', itemUpdateSubmit);
     }
 
     // click edit item
