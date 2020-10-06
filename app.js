@@ -180,6 +180,14 @@ const App = (function(ItemCtrl, UiCtrl){
         // add item event
         document.querySelector(UiSelectors.addBtn).addEventListener('click', itemAddSubmit);
 
+        // Disable sumbmit on enter(keyboard)
+        document.addEventListener('keypress', function(e){
+            if (e.key === 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
         // edit icon click event
         document.querySelector(UiSelectors.itemList).addEventListener('click', itemEditClick);
 
