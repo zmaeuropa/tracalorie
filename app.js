@@ -307,6 +307,16 @@ const ItemCtrl = (function(){
   
       e.preventDefault();
     }
+
+    // Delete item sumbit
+    const itemDeleteSubmit = function(e){
+      // get current item
+      const currentItem = ItemCtrl.getCurrentItem();
+
+      //delete from data structure
+      ItemCtrl.deleteItem(currentItem.id);
+      e.preventDefault();
+    }
   
     // Public methods
     return {
