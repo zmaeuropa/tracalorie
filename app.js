@@ -218,7 +218,7 @@ const ItemCtrl = (function(){
   
       // Disable submit on enter
       document.addEventListener('keypress', function(e){
-        if(e.keyCode === 13 || e.which === 13){
+        if(e.key === 'enter'){
           e.preventDefault();
           return false;
         }
@@ -229,6 +229,9 @@ const ItemCtrl = (function(){
   
       // Update item event
       document.querySelector(UISelectors.updateBtn).addEventListener('click', itemUpdateSubmit);
+
+      // Back button event
+      document.querySelector(UISelectors.backBtn).addEventListener('click', UICtrl.clearEditState);
     }
   
     // Add item submit
